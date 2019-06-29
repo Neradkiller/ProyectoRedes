@@ -1,0 +1,13 @@
+// ancho
+*
+// alto
+*
+// Hojas de Sprites ejemplo: 1,2,3,4
+*
+01:1-1 //Primer Sprite: hoja 1 sprite 1, recordar que esto esta en una lista
+#
+n:m-s //Sprite n: hoja m-Sprite s todos numeros enteros
+*
+//Matriz de unos y ceros de tiles que puedan ser transitados, para mi caso tal vez los que se pueden clickear
+*
+//Matriz de sprites que se dibujaran
