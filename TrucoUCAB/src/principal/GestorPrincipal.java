@@ -1,5 +1,6 @@
 package principal;
 
+import principal.control.ControlAcciones;
 import principal.graficos.SuperficieDibujo;
 import principal.graficos.Ventana;
 import principal.maquinaEstados.GestorEstados;
@@ -16,6 +17,7 @@ public class GestorPrincipal {
 	private SuperficieDibujo sd;
 	private Ventana ventana;
 	private GestorEstados ge;
+	private ControlAcciones control;
 	
 	private GestorPrincipal(final String titulo, final int ancho, final int alto){
 		this.titulo = titulo;
@@ -23,7 +25,7 @@ public class GestorPrincipal {
 		this.alto = alto;
 	} 
 	public static void main(String[] args) {
-		GestorPrincipal gestor = new GestorPrincipal("Truco UCAB",1024,512);
+		GestorPrincipal gestor = new GestorPrincipal(Constantes.NOMBRE_JUEGO,Constantes.ANCHO_PANTALLA,Constantes.ALTO_PANTALLA);
 		gestor.iniciarBuclePrincipal();
 		
 		
@@ -35,7 +37,11 @@ public class GestorPrincipal {
 	}
 	private void inicializar() {
 		sd = new SuperficieDibujo(ancho , alto);
+
 		ventana = new Ventana(titulo, sd);
+		
+		control = new ControlAcciones(ventana);
+		
 		ge = new GestorEstados();
 		iniciarJuego();
 		
@@ -88,6 +94,7 @@ public class GestorPrincipal {
 			primeraMano = false;
 			ge.cambiarEstadoActual(1);}*/
 		ge.actualizar();
+		sd.actualizar();
 		
 	}
 
