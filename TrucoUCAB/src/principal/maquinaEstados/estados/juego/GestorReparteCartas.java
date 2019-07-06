@@ -1,14 +1,10 @@
 package principal.maquinaEstados.estados.juego;
 
 import java.awt.Graphics;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-
-import javax.swing.ImageIcon;
 
 import principal.Constantes;
 import principal.entes.Carta;
-import principal.graficos.Ventana;
 import principal.maquinaEstados.EstadoJuego;
 import principal.sprites.HojaSprites;
 
@@ -16,6 +12,8 @@ public class GestorReparteCartas implements EstadoJuego {
 
 	public static ArrayList<Carta> mazoCartas = new ArrayList<Carta>();
 	private static final HojaSprites sprites = new HojaSprites(Constantes.RUTA_CARTAS, Constantes.ALTO_CARTA, Constantes.LADO_CARTA, false);
+	
+	public static ArrayList<Carta> manoJugador1 = new ArrayList<Carta>();
 	
 	public GestorReparteCartas() {
 		
@@ -66,34 +64,29 @@ public class GestorReparteCartas implements EstadoJuego {
 	}
 	@Override
 	public void actualizar() {
+		int i;
+		i = this.seleccionarCarta();
+		manoJugador1.add(mazoCartas.get(i));
+		i = this.seleccionarCarta();
+		manoJugador1.add(mazoCartas.get(i));
+		i = this.seleccionarCarta();
+		manoJugador1.add(mazoCartas.get(i));
 	}
 
 	@Override
 	public void dibujar(Graphics g) {
 		
-		int i;
-		i = this.seleccionarCarta();
-		BufferedImage imagen;
-		imagen = mazoCartas.get(i).getImagen();
-		ImageIcon img = new ImageIcon(imagen,mazoCartas.get(i).getTIPO()+","+mazoCartas.get(i).getVALOR());
-		Ventana.BOTON_CARTA_CENTRO.setIcon(img);
-		
-		i = this.seleccionarCarta();
-		BufferedImage imagen1;
-		imagen1 = mazoCartas.get(i).getImagen();
-		ImageIcon img1 = new ImageIcon(imagen1,mazoCartas.get(i).getTIPO()+","+mazoCartas.get(i).getVALOR());
-		Ventana.BOTON_CARTA_DERECHA.setIcon(img1);
-		
-		i = this.seleccionarCarta();
-		BufferedImage imagen2;
-		imagen2 = mazoCartas.get(i).getImagen();
-		ImageIcon img2 = new ImageIcon(imagen2,mazoCartas.get(i).getTIPO()+","+mazoCartas.get(i).getVALOR());
-		Ventana.BOTON_CARTA_IZQUIERDA.setIcon(img2);
 	}
 	
 	public int seleccionarCarta() {
 		int valor = (int) (Math.random() * 39);
 		return valor;
+	}
+	public ArrayList<Carta> getManoJugador1() {
+		return manoJugador1;
+	}
+	public void setManoJugador1(ArrayList<Carta> manoJugador1) {
+		this.manoJugador1 = manoJugador1;
 	}
 
 }

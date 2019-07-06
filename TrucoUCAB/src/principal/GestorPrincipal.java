@@ -89,10 +89,10 @@ public class GestorPrincipal {
 		sd.dibujar(ge);
 	}
 	private void actualizar() {
-		/*if (primeraMano) {	
+		if (primeraMano) {	
 			ge.actualizar();
 			primeraMano = false;
-			ge.cambiarEstadoActual(1);}*/
+			ge.cambiarEstadoActual(1);}
 		ge.actualizar();
 		sd.actualizar();
 		
