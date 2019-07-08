@@ -7,20 +7,20 @@ public class Carta {
 	
 	private String VALOR;
 	private String TIPO;
-	private boolean ENMAZO;
 	
-	private int posX;
-	private int posY;
+	private String valorTrama;
+	private String tipoTrama;
+	
+	private boolean ENMAZO;
 	
 	private BufferedImage imagen;
 	
-	public Carta(String valor, String tipo, boolean enmazo,  BufferedImage bufferedImage) {
+	public Carta(String valor, String tipo,String valorTrama, String tipoTrama, boolean enmazo,  BufferedImage bufferedImage) {
 		this.VALOR = valor;
 		this.TIPO = tipo;
+		this.valorTrama = valorTrama;
+		this.tipoTrama = tipoTrama;
 		this.ENMAZO = enmazo;
-		
-		this.posX = posX;
-		this.posY = posY;
 		
 		this.imagen = bufferedImage;
 	}
@@ -62,20 +62,20 @@ public class Carta {
 		ENMAZO = eNMAZO;
 	}
 
-	public int getPosX() {
-		return posX;
+	public String getValorTrama() {
+		return valorTrama;
 	}
 
-	public void setPosX(int posX) {
-		this.posX = posX;
+	public void setValorTrama(String valorTrama) {
+		this.valorTrama = valorTrama;
 	}
 
-	public int getPosY() {
-		return posY;
+	public String getTipoTrama() {
+		return tipoTrama;
 	}
 
-	public void setPosY(int posY) {
-		this.posY = posY;
+	public void setTipoTrama(String tipoTrama) {
+		this.tipoTrama = tipoTrama;
 	}
 
 }
