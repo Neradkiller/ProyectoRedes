@@ -3,7 +3,7 @@ import jssc.SerialPort;
 import jssc.SerialPortEvent;
 import jssc.SerialPortEventListener;
 import jssc.SerialPortException;
-import principal.maquinaEstados.estados.menuPrincipal.MenuPrincipalControlador;
+import principal.maquinaEstados.estados.menuPrincipal.ControlMaestro;
  
 public class Puerto {
  
@@ -46,7 +46,7 @@ public class Puerto {
                 	System.out.println(serialPort.getPortName());
                     String receivedData = serialPort.readString(event.getEventValue());
                     System.out.println("Received response: " + receivedData);
-                    MenuPrincipalControlador.pantalla.getMensajeRecibido().setText(receivedData);
+                    ControlMaestro.pantalla.getMensajeRecibido().setText(receivedData);
                 }
                 catch (SerialPortException ex) {
                     System.out.println("Error in receiving string from COM-port: " + ex);

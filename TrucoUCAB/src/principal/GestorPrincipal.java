@@ -1,9 +1,9 @@
 package principal;
 
-import principal.control.ControlAcciones;
 import principal.graficos.SuperficieDibujo;
 import principal.graficos.Ventana;
 import principal.maquinaEstados.GestorEstados;
+import principal.maquinaEstados.estados.menuPrincipal.ControlMaestro;
 
 public class GestorPrincipal {
 
@@ -16,20 +16,19 @@ public class GestorPrincipal {
 	
 	private SuperficieDibujo sd;
 	private Ventana ventana;
+	private MenuPrincipalPantalla pantalla;
 	private GestorEstados ge;
-	private ControlAcciones control;
+	private ControlMaestro control;
 	
-	private GestorPrincipal(final String titulo, final int ancho, final int alto){
+	public GestorPrincipal(final String titulo, final int ancho, final int alto){
 		this.titulo = titulo;
 		this.ancho = ancho;
 		this.alto = alto;
+		this.iniciarBuclePrincipal();
 	} 
 	public static void main(String[] args) {
 		GestorPrincipal gestor = new GestorPrincipal(Constantes.NOMBRE_JUEGO,Constantes.ANCHO_PANTALLA,Constantes.ALTO_PANTALLA);
 		gestor.iniciarBuclePrincipal();
-		
-		
-		
 	}
 	private void iniciarBuclePrincipal() {
 		enFuncionamiento = true;
@@ -37,14 +36,11 @@ public class GestorPrincipal {
 	}
 	private void inicializar() {
 		sd = new SuperficieDibujo(ancho , alto);
-
 		ventana = new Ventana(titulo, sd);
-		
-		control = new ControlAcciones(ventana);
-		
+		pantalla = new MenuPrincipalPantalla();
+		control = new ControlMaestro(pantalla,ventana);
 		ge = new GestorEstados();
 		iniciarJuego();
-		
 	}
 	private void iniciarJuego() {
 		
@@ -89,7 +85,7 @@ public class GestorPrincipal {
 		sd.dibujar(ge);
 	}
 	private void actualizar() {
-		if (primeraMano) {	
+		if (primeraMano) {
 			ge.actualizar();
 			primeraMano = false;
 			ge.cambiarEstadoActual(1);}

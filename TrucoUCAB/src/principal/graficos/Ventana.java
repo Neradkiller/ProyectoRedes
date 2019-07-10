@@ -18,6 +18,7 @@ public class Ventana extends JFrame {
 	public static final JButton BOTON_CARTA_IZQUIERDA = new JButton();
 	//Botones de cartas
 	
+	
 	//Botones de Jugada
 	
 	//Botones de Jugada
@@ -27,15 +28,15 @@ public class Ventana extends JFrame {
 		
 		BOTON_CARTA_CENTRO.setBounds(Constantes.ANCHO_PANTALLA/2, Constantes.ALTO_PANTALLA - Constantes.ALTO_CARTA - 20, Constantes.LADO_CARTA, Constantes.ALTO_CARTA);
 		this.add(BOTON_CARTA_CENTRO);
-		BOTON_CARTA_CENTRO.setEnabled(false);
+		//BOTON_CARTA_CENTRO.setEnabled(false);
 		
 		BOTON_CARTA_DERECHA.setBounds(Constantes.ANCHO_PANTALLA/2 + Constantes.LADO_CARTA + 15, Constantes.ALTO_PANTALLA - Constantes.ALTO_CARTA - 20, Constantes.LADO_CARTA, Constantes.ALTO_CARTA);
 		this.add(BOTON_CARTA_DERECHA);
-		BOTON_CARTA_DERECHA.setEnabled(false);
+		//BOTON_CARTA_DERECHA.setEnabled(false);
 		
 		BOTON_CARTA_IZQUIERDA.setBounds(Constantes.ANCHO_PANTALLA/2 - Constantes.LADO_CARTA - 15, Constantes.ALTO_PANTALLA - Constantes.ALTO_CARTA - 20, Constantes.LADO_CARTA, Constantes.ALTO_CARTA);
 		this.add(BOTON_CARTA_IZQUIERDA);
-		BOTON_CARTA_IZQUIERDA.setEnabled(false);
+		//BOTON_CARTA_IZQUIERDA.setEnabled(false);
 		
 		
 		
@@ -48,10 +49,10 @@ public class Ventana extends JFrame {
 		setResizable(false);
 		setLayout(new BorderLayout());
 		add(sd, BorderLayout.CENTER);
-		//setUndecorated(true);
+		setUndecorated(true);
 		pack();
 		setLocationRelativeTo(null);
-		setVisible(true);
+		setVisible(false);
 		
 	}
 }

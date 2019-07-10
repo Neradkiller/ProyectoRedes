@@ -15,6 +15,8 @@ public class MenuPrincipalPantalla {
 	JButton enviarMensaje;
 	private JTextField mensajeRecibido;
 	private JComboBox listaPuertos;
+	private JButton iniciarJuego;
+	private JComboBox listaEstacion;
 
 	/**
 	 * Launch the application.
@@ -57,7 +59,7 @@ public class MenuPrincipalPantalla {
 		listaPuertos.setBounds(190, 143, 262, 20);
 		vista.getContentPane().add(listaPuertos);
 		
-		JComboBox listaEstacion = new JComboBox();
+		listaEstacion = new JComboBox();
 		listaEstacion.setBounds(190, 62, 262, 20);
 		listaEstacion.addItem("A");
 		listaEstacion.addItem("B");
@@ -83,6 +85,10 @@ public class MenuPrincipalPantalla {
 		enviarMensaje = new JButton("Enviar Mensaje");
 		enviarMensaje.setBounds(591, 360, 178, 23);
 		vista.getContentPane().add(enviarMensaje);
+		
+		iniciarJuego = new JButton("Iniciar Juego");
+		iniciarJuego.setBounds(591, 412, 178, 23);
+		vista.getContentPane().add(iniciarJuego);
 		vista.setVisible(true);
 	}
 	public JFrame getVista() {
@@ -126,5 +132,17 @@ public class MenuPrincipalPantalla {
 	}
 	public void setEnviarMensaje(JButton enviarMensaje) {
 		this.enviarMensaje = enviarMensaje;
+	}
+	public JButton getIniciarJuego() {
+		return iniciarJuego;
+	}
+	public void setIniciarJuego(JButton iniciarJuego) {
+		this.iniciarJuego = iniciarJuego;
+	}
+	public JComboBox getListaEstacion() {
+		return listaEstacion;
+	}
+	public void setListaEstacion(JComboBox listaEstacion) {
+		this.listaEstacion = listaEstacion;
 	}
 }
