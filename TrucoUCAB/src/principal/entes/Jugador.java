@@ -32,5 +32,5 @@ public abstract class Jugador {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	public abstract void verificarMensaje(String mensaje);
+	public abstract boolean verificarMensaje(String mensaje);
 }

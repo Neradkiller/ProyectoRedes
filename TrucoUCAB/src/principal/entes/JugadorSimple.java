@@ -22,8 +22,9 @@ public class JugadorSimple extends Jugador{
 	}
 
 	@Override
-	public void verificarMensaje(String mensaje) {
+	public boolean verificarMensaje(String mensaje) {
 		// TODO Auto-generated method stub
+		boolean reenvio = false;
 		System.out.println(mensaje.length());
 		System.out.println("Mensaje recibido: "+ mensaje);
 		String lectura = mensaje.substring(0, 12);
@@ -32,11 +33,13 @@ public class JugadorSimple extends Jugador{
 			lectura = mensaje.substring(12, 14);
 			System.out.println("Tpo de trama: "+lectura);
 			if (lectura.equals("01")) {
-				tipoTrama01(mensaje);
+				reenvio = tipoTrama01(mensaje);
 			}
 		}
+		return reenvio;
 	}
-	public void tipoTrama01(String mensaje) {
+	public boolean tipoTrama01(String mensaje) {
+		boolean reenvio = false;
 		String lectura = mensaje.substring(14, 17);
 		System.out.println("Emisor: "+ lectura);
 		if (lectura.equals("001")) {
@@ -51,7 +54,12 @@ public class JugadorSimple extends Jugador{
 				GestorJuego.lista = cartas;
 				System.out.println("Trama final: "+ mensaje.substring(44, 56));
 			}
+			else {
+				System.out.println("No es pa ti rotalo");
+				reenvio = true;
+				}
 		}
+		return reenvio;
 	}
 	public Carta buscarCarta(String numero,String pinta) {
 		Carta carta = null;

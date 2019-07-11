@@ -2,6 +2,7 @@ package principal.maquinaEstados.estados.menuPrincipal;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.concurrent.TimeUnit;
 
 import principal.MenuPrincipalPantalla;
 import principal.entes.Carta;
@@ -18,7 +19,7 @@ public class ControlMaestro implements ActionListener{
 	public static MenuPrincipalPantalla pantalla;
 	public static Ventana ventana;
 	public static Jugador jugador;
-	Puerto puerto;
+	public static Puerto puerto;
 	
 	
 	@SuppressWarnings("unchecked")
@@ -62,12 +63,27 @@ public class ControlMaestro implements ActionListener{
 				jugador = new JugadorServidor(pantalla.getNombreEdit().getText(),"A");
 				Carta vira = GestorReparteCartas.vira;
 				GestorJuego.lista = GestorReparteCartas.manoJugadorA;
-				System.out.println(vira.getVALOR()+","+vira.getTIPO()+","+vira.getValorTrama()+","+vira.getTipoTrama());
-				GestorJuego.lista.add(vira);
 				
+				GestorJuego.lista.add(vira);
+				try {
+					TimeUnit.SECONDS.sleep(2);
+				} catch (InterruptedException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
 				puerto.enviarMensaje(jugador.crearTramaParaRepartirCarta(GestorReparteCartas.manoJugadorB.get(0),GestorReparteCartas.manoJugadorB.get(1),GestorReparteCartas.manoJugadorB.get(2),vira,"010"));
-				//puerto.enviarMensaje(jugador.crearTramaParaRepartirCarta(GestorReparteCartas.manoJugadorC.get(0),GestorReparteCartas.manoJugadorC.get(1),GestorReparteCartas.manoJugadorC.get(2),GestorReparteCartas.vira,"011"));
-				//puerto.enviarMensaje(jugador.crearTramaParaRepartirCarta(GestorReparteCartas.manoJugadorD.get(0),GestorReparteCartas.manoJugadorD.get(1),GestorReparteCartas.manoJugadorD.get(2),GestorReparteCartas.vira,"100"));
+				try {
+					TimeUnit.SECONDS.sleep(2);
+				} catch (InterruptedException e1) {
+					e1.printStackTrace();
+				}
+				puerto.enviarMensaje(jugador.crearTramaParaRepartirCarta(GestorReparteCartas.manoJugadorC.get(0),GestorReparteCartas.manoJugadorC.get(1),GestorReparteCartas.manoJugadorC.get(2),vira,"011"));
+				try {
+					TimeUnit.SECONDS.sleep(2);
+				} catch (InterruptedException e1) {
+					e1.printStackTrace();
+				}
+				puerto.enviarMensaje(jugador.crearTramaParaRepartirCarta(GestorReparteCartas.manoJugadorD.get(0),GestorReparteCartas.manoJugadorD.get(1),GestorReparteCartas.manoJugadorD.get(2),vira,"100"));
 			}
 			else {
 				if (this.pantalla.getListaEstacion().getSelectedItem() == "B") {

@@ -47,8 +47,9 @@ public class JugadorServidor extends Jugador{
 		return null;
 	}
 	@Override
-	public void verificarMensaje(String mensaje) {
+	public boolean verificarMensaje(String mensaje) {
 		// TODO Auto-generated method stub
+		return true;
 		
 	}
 }
