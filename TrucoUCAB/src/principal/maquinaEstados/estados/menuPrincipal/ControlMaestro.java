@@ -4,15 +4,20 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import principal.MenuPrincipalPantalla;
+import principal.entes.Carta;
 import principal.entes.Jugador;
+import principal.entes.JugadorServidor;
+import principal.entes.JugadorSimple;
 import principal.graficos.Ventana;
+import principal.maquinaEstados.estados.juego.GestorJuego;
+import principal.maquinaEstados.estados.juego.GestorReparteCartas;
 import principal.redes.ListaPuertos;
 import principal.redes.Puerto;
 
 public class ControlMaestro implements ActionListener{
 	public static MenuPrincipalPantalla pantalla;
 	public static Ventana ventana;
-	private Jugador jugador;
+	public static Jugador jugador;
 	Puerto puerto;
 	
 	
@@ -53,7 +58,28 @@ public class ControlMaestro implements ActionListener{
 		else if (pantalla.getIniciarJuego() == e.getSource()) {
 			this.ventana.setVisible(true);
 			if (this.pantalla.getListaEstacion().getSelectedItem() == "A") {
-				System.out.println("Comienza");
+	
+				jugador = new JugadorServidor(pantalla.getNombreEdit().getText(),"A");
+				Carta vira = GestorReparteCartas.vira;
+				GestorJuego.lista = GestorReparteCartas.manoJugadorA;
+				System.out.println(vira.getVALOR()+","+vira.getTIPO()+","+vira.getValorTrama()+","+vira.getTipoTrama());
+				GestorJuego.lista.add(vira);
+				
+				puerto.enviarMensaje(jugador.crearTramaParaRepartirCarta(GestorReparteCartas.manoJugadorB.get(0),GestorReparteCartas.manoJugadorB.get(1),GestorReparteCartas.manoJugadorB.get(2),vira,"010"));
+				//puerto.enviarMensaje(jugador.crearTramaParaRepartirCarta(GestorReparteCartas.manoJugadorC.get(0),GestorReparteCartas.manoJugadorC.get(1),GestorReparteCartas.manoJugadorC.get(2),GestorReparteCartas.vira,"011"));
+				//puerto.enviarMensaje(jugador.crearTramaParaRepartirCarta(GestorReparteCartas.manoJugadorD.get(0),GestorReparteCartas.manoJugadorD.get(1),GestorReparteCartas.manoJugadorD.get(2),GestorReparteCartas.vira,"100"));
+			}
+			else {
+				if (this.pantalla.getListaEstacion().getSelectedItem() == "B") {
+					jugador = new JugadorSimple(pantalla.getNombreEdit().getText(),"B","010");
+				}
+				if (this.pantalla.getListaEstacion().getSelectedItem() == "C") {
+					jugador = new JugadorSimple(pantalla.getNombreEdit().getText(),"C","011");
+				}
+				if (this.pantalla.getListaEstacion().getSelectedItem() == "D") {
+					jugador = new JugadorSimple(pantalla.getNombreEdit().getText(),"D","100");
+				}
+	
 			}
 			//GestorPrincipal gestor = new GestorPrincipal(Constantes.NOMBRE_JUEGO,Constantes.ANCHO_PANTALLA,Constantes.ALTO_PANTALLA);
 		}

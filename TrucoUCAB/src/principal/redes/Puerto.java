@@ -43,9 +43,10 @@ public class Puerto {
         public void serialEvent(SerialPortEvent event) {
             if(event.isRXCHAR() && event.getEventValue() > 0) {
                 try {
-                	System.out.println(serialPort.getPortName());
+                	//System.out.println(serialPort.getPortName());
                     String receivedData = serialPort.readString(event.getEventValue());
-                    System.out.println("Received response: " + receivedData);
+                    ControlMaestro.jugador.verificarMensaje(receivedData);
+                    //System.out.println("Received response: " + receivedData);
                     ControlMaestro.pantalla.getMensajeRecibido().setText(receivedData);
                 }
                 catch (SerialPortException ex) {

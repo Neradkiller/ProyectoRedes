@@ -11,12 +11,14 @@ import principal.sprites.HojaSprites;
 public class GestorReparteCartas implements EstadoJuego {
 
 	public static ArrayList<Carta> mazoCartas = new ArrayList<Carta>();
+	
 	private static final HojaSprites sprites = new HojaSprites(Constantes.RUTA_CARTAS, Constantes.ALTO_CARTA, Constantes.LADO_CARTA, false);
 	
 	public static ArrayList<Carta> manoJugadorA = new ArrayList<Carta>();
 	public static ArrayList<Carta> manoJugadorB = new ArrayList<Carta>();
 	public static ArrayList<Carta> manoJugadorC = new ArrayList<Carta>();
 	public static ArrayList<Carta> manoJugadorD = new ArrayList<Carta>();
+	public static Carta vira;
 	
 	
 	public GestorReparteCartas() {
@@ -74,62 +76,66 @@ public class GestorReparteCartas implements EstadoJuego {
 		i = this.seleccionarCarta();
 		manoJugadorA.add(mazoCartas.get(i));
 		mazoCartas.get(i).setENMAZO(false);
-		System.out.println(i);
 		
 		i = this.seleccionarCarta();
 		manoJugadorA.add(mazoCartas.get(i));
 		mazoCartas.get(i).setENMAZO(false);
-		System.out.println(i);
+
 		
 		i = this.seleccionarCarta();
 		manoJugadorA.add(mazoCartas.get(i));
 		mazoCartas.get(i).setENMAZO(false);
-		System.out.println(i);
+
 		
 		i = this.seleccionarCarta();
 		manoJugadorB.add(mazoCartas.get(i));
 		mazoCartas.get(i).setENMAZO(false);
-		System.out.println(i);
+
 		
 		i = this.seleccionarCarta();
 		manoJugadorB.add(mazoCartas.get(i));
 		mazoCartas.get(i).setENMAZO(false);
-		System.out.println(i);
+		
 		
 		i = this.seleccionarCarta();
 		manoJugadorB.add(mazoCartas.get(i));
 		mazoCartas.get(i).setENMAZO(false);
-		System.out.println(i);
+		
 		
 		i = this.seleccionarCarta();
 		manoJugadorC.add(mazoCartas.get(i));
 		mazoCartas.get(i).setENMAZO(false);
-		System.out.println(i);
+		
 		
 		i = this.seleccionarCarta();
 		manoJugadorC.add(mazoCartas.get(i));
 		mazoCartas.get(i).setENMAZO(false);
-		System.out.println(i);
+	
 		
 		i = this.seleccionarCarta();
 		manoJugadorC.add(mazoCartas.get(i));
 		mazoCartas.get(i).setENMAZO(false);
-		System.out.println(i);
+		
 		
 		i = this.seleccionarCarta();
 		manoJugadorD.add(mazoCartas.get(i));
 		mazoCartas.get(i).setENMAZO(false);
-		System.out.println(i);
+		
 		
 		i = this.seleccionarCarta();
 		manoJugadorD.add(mazoCartas.get(i));
 		mazoCartas.get(i).setENMAZO(false);
-		System.out.println(i);
+		
 		
 		i = this.seleccionarCarta();
 		manoJugadorD.add(mazoCartas.get(i));
 		mazoCartas.get(i).setENMAZO(false);
-		System.out.println(i);
+		
+		
+		i = this.seleccionarCarta();
+		vira = mazoCartas.get(i);
+		mazoCartas.get(i).setENMAZO(false);
+		
 		
 	}
 

@@ -49,7 +49,7 @@ public class Ventana extends JFrame {
 		setResizable(false);
 		setLayout(new BorderLayout());
 		add(sd, BorderLayout.CENTER);
-		setUndecorated(true);
+		//setUndecorated(true);
 		pack();
 		setLocationRelativeTo(null);
 		setVisible(false);

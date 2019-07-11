@@ -25,4 +25,12 @@ public abstract class Jugador {
 	public void setEstacionJugador(String estacionJugador) {
 		this.estacionJugador = estacionJugador;
 	}
+
+	public abstract String crearTramaParaRepartirCarta();
+
+	public String crearTramaParaRepartirCarta(Carta carta,Carta carta2,Carta carta3,Carta vira, String destino) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public abstract void verificarMensaje(String mensaje);
 }
