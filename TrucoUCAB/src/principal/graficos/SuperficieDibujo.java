@@ -42,7 +42,7 @@ public class SuperficieDibujo extends Canvas {
 		final Graphics2D g = (Graphics2D) buffer.getDrawGraphics();
 		
 		//Aca se puede dibujar el fondo del juego
-		g.setColor(Color.BLACK);
+		g.setColor(Color.GREEN);
 		g.fillRect(0, 0, ancho, alto);
 		
 		ge.dibujar(g);

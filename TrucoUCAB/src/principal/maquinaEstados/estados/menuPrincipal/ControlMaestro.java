@@ -20,6 +20,7 @@ public class ControlMaestro implements ActionListener{
 	public static Ventana ventana;
 	public static Jugador jugador;
 	public static Puerto puerto;
+	public static String cadena = "";
 	
 	
 	@SuppressWarnings("unchecked")
@@ -68,22 +69,46 @@ public class ControlMaestro implements ActionListener{
 				try {
 					TimeUnit.SECONDS.sleep(2);
 				} catch (InterruptedException e2) {
-					// TODO Auto-generated catch block
 					e2.printStackTrace();
 				}
-				puerto.enviarMensaje(jugador.crearTramaParaRepartirCarta(GestorReparteCartas.manoJugadorB.get(0),GestorReparteCartas.manoJugadorB.get(1),GestorReparteCartas.manoJugadorB.get(2),vira,"010"));
+				cadena = jugador.crearTramaParaRepartirCarta(GestorReparteCartas.manoJugadorB.get(0),GestorReparteCartas.manoJugadorB.get(1),GestorReparteCartas.manoJugadorB.get(2),vira,"010");
+				puerto.enviarMensaje(cadena.substring(0, 8));
+				puerto.enviarMensaje(cadena.substring(8, 16));
+				puerto.enviarMensaje(cadena.substring(16, 24));
+				puerto.enviarMensaje(cadena.substring(24, 32));
+				puerto.enviarMensaje(cadena.substring(32, 40));
+				puerto.enviarMensaje(cadena.substring(40, 48));
+				puerto.enviarMensaje(cadena.substring(48, 56));
+				cadena = "";
+				
 				try {
 					TimeUnit.SECONDS.sleep(2);
 				} catch (InterruptedException e1) {
 					e1.printStackTrace();
 				}
-				puerto.enviarMensaje(jugador.crearTramaParaRepartirCarta(GestorReparteCartas.manoJugadorC.get(0),GestorReparteCartas.manoJugadorC.get(1),GestorReparteCartas.manoJugadorC.get(2),vira,"011"));
+				cadena = (jugador.crearTramaParaRepartirCarta(GestorReparteCartas.manoJugadorC.get(0),GestorReparteCartas.manoJugadorC.get(1),GestorReparteCartas.manoJugadorC.get(2),vira,"011"));
+				puerto.enviarMensaje(cadena.substring(0, 8));
+				puerto.enviarMensaje(cadena.substring(8, 16));
+				puerto.enviarMensaje(cadena.substring(16, 24));
+				puerto.enviarMensaje(cadena.substring(24, 32));
+				puerto.enviarMensaje(cadena.substring(32, 40));
+				puerto.enviarMensaje(cadena.substring(40, 48));
+				puerto.enviarMensaje(cadena.substring(48, 56));
+				cadena = "";
 				try {
 					TimeUnit.SECONDS.sleep(2);
 				} catch (InterruptedException e1) {
 					e1.printStackTrace();
 				}
-				puerto.enviarMensaje(jugador.crearTramaParaRepartirCarta(GestorReparteCartas.manoJugadorD.get(0),GestorReparteCartas.manoJugadorD.get(1),GestorReparteCartas.manoJugadorD.get(2),vira,"100"));
+				cadena = (jugador.crearTramaParaRepartirCarta(GestorReparteCartas.manoJugadorD.get(0),GestorReparteCartas.manoJugadorD.get(1),GestorReparteCartas.manoJugadorD.get(2),vira,"100"));
+				puerto.enviarMensaje(cadena.substring(0, 8));
+				puerto.enviarMensaje(cadena.substring(8, 16));
+				puerto.enviarMensaje(cadena.substring(16, 24));
+				puerto.enviarMensaje(cadena.substring(24, 32));
+				puerto.enviarMensaje(cadena.substring(32, 40));
+				puerto.enviarMensaje(cadena.substring(40, 48));
+				puerto.enviarMensaje(cadena.substring(48, 56));
+				cadena = "";
 			}
 			else {
 				if (this.pantalla.getListaEstacion().getSelectedItem() == "B") {

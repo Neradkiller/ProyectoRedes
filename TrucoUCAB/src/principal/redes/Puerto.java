@@ -38,20 +38,24 @@ public class Puerto {
     }
  
     private static class SerialPortReader implements SerialPortEventListener {
-
+    	public static String cadena = "";
         @Override
         public void serialEvent(SerialPortEvent event) {
             if(event.isRXCHAR() && event.getEventValue() > 0) {
                 try {
-                	//System.out.println(serialPort.getPortName());
+                	System.out.println(serialPort.getPortName());
                     String receivedData = serialPort.readString(event.getEventValue());
-                    if (ControlMaestro.jugador.verificarMensaje(receivedData)) {
-                    	ControlMaestro.puerto.enviarMensaje(receivedData);
-                    	System.out.println("Reenvia");
-                    }
-                    //System.out.println("Received response: " + receivedData);
+                    cadena = cadena + receivedData;
+                    if (cadena.length() == 56) {
+                    	if (ControlMaestro.jugador.verificarMensaje(cadena)) {
+                    		ControlMaestro.puerto.enviarMensaje(cadena);
+                    		cadena = "";
+                    		System.out.println("Reenvia");
+                    	}
+                    System.out.println("Received response: " + receivedData);
                     ControlMaestro.pantalla.getMensajeRecibido().setText(receivedData);
                 }
+                    }
                 catch (SerialPortException ex) {
                     System.out.println("Error in receiving string from COM-port: " + ex);
                 }
